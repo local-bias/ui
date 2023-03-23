@@ -6,7 +6,6 @@
     "jsx": "react",
     "sourceMap": true,
     "outDir": "./dist",
-    "rootDir": "./src",
     "strict": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
