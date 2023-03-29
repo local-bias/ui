@@ -1,4 +1,5 @@
 import { LoadingOverlay } from "@konomi-app/ui";
+import "./react";
 
 console.log("javascript file loaded!");
 
