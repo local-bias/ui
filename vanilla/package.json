@@ -13,7 +13,7 @@
     "@emotion/css": "^11.10.6"
   },
   "devDependencies": {
-    "typescript": "^4.9.5"
+    "typescript": "^5.0.3"
   },
   "prettier": {
     "printWidth": 100,
