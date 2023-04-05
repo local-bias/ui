@@ -25,6 +25,7 @@ export class LoadingOverlay extends Overlay {
     this._root.append(container);
 
     const loaderElement = document.createElement('div');
+    loaderElement.innerHTML = '<div><div></div></div>';
     loaderElement.classList.add(this.loaderStyle);
     this._loaderElement = loaderElement;
     container.append(loaderElement);
@@ -67,7 +68,7 @@ export class LoadingOverlay extends Overlay {
     super.render();
 
     this._progressElement.style.width = `${this.#progress}%`;
-    this._loaderElement.style.animationName = this._shown ? 'spin' : 'none';
+    this._loaderElement.style.animation = this._shown ? 'rotate 1.2s infinite linear' : 'none';
 
     if (this.#html) {
       this._contentElement.innerHTML = this.#html;
@@ -120,19 +121,40 @@ export class LoadingOverlay extends Overlay {
   `;
 
   private loaderStyle = css`
-    font-size: 48px;
+    font-size: 60px;
     width: 1em;
     height: 1em;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1px #3b82f633;
     position: relative;
-    border: 2px solid #2563ebaa;
-    border-radius: 1em;
-    animation-duration: 2s;
-    animation-timing-function: ease;
-    animation-delay: 0s;
-    animation-iteration-count: infinite;
-    animation-direction: normal;
-    animation-fill-mode: none;
-    animation-play-state: running;
+    > div {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 0.5em;
+      height: 1em;
+      margin-left: -0.5em;
+      margin-top: -0.5em;
+      overflow: hidden;
+      transform-origin: 0.5em 0.5em;
+      mask-image: linear-gradient(top, #000f, #0000);
+      -webkit-mask-image: -webkit-linear-gradient(top, #000f, #0000);
+
+      > div {
+        width: 1em;
+        height: 1em;
+        border-radius: 50%;
+        box-shadow: inset 0 0 0 1px #3b82f6;
+      }
+    }
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
   `;
 
   private progressStyle = css`
@@ -140,8 +162,8 @@ export class LoadingOverlay extends Overlay {
     bottom: 0px;
     left: 0;
     width: 0%;
-    height: 3px;
+    height: 2px;
     background-color: #2563eb;
-    transition: all 250ms ease;
+    transition: all 350ms ease;
   `;
 }

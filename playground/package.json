@@ -10,14 +10,14 @@
   "devDependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
-    "@konomi-app/kbuild": "^1.4.0",
-    "@konomi-app/kintone-utilities": "^1.11.0",
-    "@konomi-app/ui": "^1.5.2",
-    "@konomi-app/ui-react": "^0.3.0",
-    "@types/react": "^18.0.31",
+    "@konomi-app/kbuild": "^1.4.1",
+    "@konomi-app/kintone-utilities": "^1.12.8",
+    "@konomi-app/ui": "^1.6.0",
+    "@konomi-app/ui-react": "^0.4.0",
+    "@types/react": "^18.0.33",
     "@types/react-dom": "^18.0.11",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "typescript": "^5.0.2"
+    "typescript": "^5.0.3"
   }
 }
