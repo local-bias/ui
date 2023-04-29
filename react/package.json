@@ -10,13 +10,13 @@
     "prepare": "yarn run build"
   },
   "dependencies": {
-    "@emotion/react": "^11.10.6",
-    "@emotion/styled": "^11.10.6",
+    "@emotion/react": "^11.10.8",
+    "@emotion/styled": "^11.10.8",
     "react": "^18.2.0"
   },
   "devDependencies": {
-    "@types/react": "^18.0.33",
-    "typescript": "^5.0.3"
+    "@types/react": "^18.2.0",
+    "typescript": "^5.0.4"
   },
   "prettier": {
     "printWidth": 100,
