@@ -97,27 +97,6 @@ export class LoadingOverlay extends Overlay {
     position: relative;
     overflow: hidden;
     transition: all 250ms ease;
-
-    @keyframes spin {
-      0% {
-        transform: rotate(0deg);
-        border-radius: 1em;
-      }
-      20% {
-        transform: rotate(0deg);
-      }
-      30%,
-      60% {
-        border-radius: 0.25em;
-      }
-      70% {
-        transform: rotate(180deg);
-      }
-      100% {
-        transform: rotate(180deg);
-        border-radius: 1em;
-      }
-    }
   `;
 
   private loaderStyle = css`
