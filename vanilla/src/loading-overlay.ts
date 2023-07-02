@@ -91,7 +91,7 @@ export class LoadingOverlay extends Overlay {
     background-color: #fffc;
     border-radius: 8px;
     box-shadow: 0 5px 24px -6px #0002;
-    width: 300px;
+    width: 400px;
     max-width: 90vw;
     min-height: 200px;
     position: relative;
