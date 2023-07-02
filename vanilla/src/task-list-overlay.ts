@@ -94,11 +94,11 @@ export class TaskListOverlay extends Overlay {
   private getTaskStatusElement(status: TaskStatus): string {
     switch (status) {
       case 'new':
-        return `<div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus-circle"><circle cx="12" cy="12" r="10"></circle><line x1="8" y1="12" x2="16" y2="12"></line></svg></div>`;
+        return `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus-circle"><circle cx="12" cy="12" r="10"></circle><line x1="8" y1="12" x2="16" y2="12"></line></svg>`;
       case 'in-progress':
         return `<div><div></div></div>`;
       case 'done':
-        return `<div><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#80beaf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>`;
+        return `<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="#80beaf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-circle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`;
       default:
         return ``;
     }
@@ -150,7 +150,7 @@ export class TaskListOverlay extends Overlay {
   private taskListContainerStyle = css`
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 1em;
     width: 100%;
   `;
 
@@ -163,16 +163,17 @@ export class TaskListOverlay extends Overlay {
   private taskLabelStyle = css``;
 
   private taskStatusStyle = css`
-    width: 24px;
-    height: 24px;
+    font-size: 32px;
+    width: 1em;
+    height: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &.status-new {
     }
 
     &.status-in-progress {
-      font-size: 24px;
-      width: 1em;
-      height: 1em;
       border-radius: 50%;
       box-shadow: inset 0 0 0 1px #3b82f633;
       position: relative;
