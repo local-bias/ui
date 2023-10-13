@@ -6,7 +6,7 @@
   "author": "adachi",
   "license": "MIT",
   "scripts": {
-    "build": "tsc",
+    "build": "rmdir dist /s /q & tsc",
     "prepare": "yarn run build"
   },
   "dependencies": {
