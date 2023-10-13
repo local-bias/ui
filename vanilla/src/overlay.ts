@@ -35,7 +35,7 @@ export class Overlay {
   }
 
   /** JavaScript中にページを離れようとした場合にアラートを表示します */
-  private beforeunload(event: BeforeUnloadEvent) {
+  private beforeunload(event: BeforeUnloadEvent): void {
     event.preventDefault();
     event.returnValue = '';
   }
@@ -44,11 +44,11 @@ export class Overlay {
     font-family: 'Yu Gothic Medium', '游ゴシック', YuGothic, 'メイリオ', 'Hiragino Kaku Gothic ProN',
       Meiryo, sans-serif;
     color: #356;
-    font-size: 17px;
+    font-size: 16px;
 
     overflow: hidden;
-    background-color: #fff6;
-    backdrop-filter: blur(10px);
+    background-color: #fffb;
+    backdrop-filter: blur(4px);
     box-sizing: content-box;
 
     position: fixed;
@@ -57,22 +57,22 @@ export class Overlay {
     height: 100vh;
 
     display: grid;
-    place-items: center;
     transition: all 250ms ease;
     z-index: 1000;
     opacity: 0;
     transition: all 250ms ease;
+
+    place-items: end stretch;
+    @media (min-width: 640px) {
+      place-items: center;
+    }
   `;
 
-  /**
-   * @deprecated このメソッドは非推奨です。代わりに`show`メソッドを使用してください。
-   */
+  /** @deprecated このメソッドは非推奨です。代わりに`show`メソッドを使用してください。 */
   public start(): void {
     this.show();
   }
-  /**
-   * @deprecated このメソッドは非推奨です。代わりに`hide`メソッドを使用してください。
-   */
+  /** @deprecated このメソッドは非推奨です。代わりに`hide`メソッドを使用してください。 */
   public stop(): void {
     this.hide();
   }

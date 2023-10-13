@@ -1,5 +1,5 @@
-import { css } from '@emotion/css';
-import { Overlay } from './overlay';
+import { Overlay } from '../overlay';
+import { containerStyle, loaderStyle, progressStyle } from './style';
 
 type Label = string | string[];
 type ConstructorProps = Readonly<Partial<{ label: Label; progress: number }>>;
@@ -21,17 +21,17 @@ export class LoadingOverlay extends Overlay {
     this.#progress = props.progress ?? null;
 
     const container = document.createElement('div');
-    container.classList.add(this.containerStyle);
+    container.classList.add(containerStyle);
     this._root.append(container);
 
     const loaderElement = document.createElement('div');
     loaderElement.innerHTML = '<div><div></div></div>';
-    loaderElement.classList.add(this.loaderStyle);
+    loaderElement.classList.add(loaderStyle);
     this._loaderElement = loaderElement;
     container.append(loaderElement);
 
     const progressElement = document.createElement('div');
-    progressElement.classList.add(this.progressStyle);
+    progressElement.classList.add(progressStyle);
     this._progressElement = progressElement;
     container.append(progressElement);
 
@@ -80,69 +80,4 @@ export class LoadingOverlay extends Overlay {
       }
     }
   }
-
-  private containerStyle = css`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 32px;
-    padding: 32px 64px;
-    background-color: #fffc;
-    border-radius: 8px;
-    box-shadow: 0 5px 24px -6px #0002;
-    width: 400px;
-    max-width: 90vw;
-    min-height: 200px;
-    position: relative;
-    overflow: hidden;
-    transition: all 250ms ease;
-  `;
-
-  private loaderStyle = css`
-    font-size: 60px;
-    width: 1em;
-    height: 1em;
-    border-radius: 50%;
-    box-shadow: inset 0 0 0 1px #3b82f633;
-    position: relative;
-    > div {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 0.5em;
-      height: 1em;
-      margin-left: -0.5em;
-      margin-top: -0.5em;
-      overflow: hidden;
-      transform-origin: 0.5em 0.5em;
-      mask-image: linear-gradient(top, #000f, #0000);
-      -webkit-mask-image: -webkit-linear-gradient(top, #000f, #0000);
-
-      > div {
-        width: 1em;
-        height: 1em;
-        border-radius: 50%;
-        box-shadow: inset 0 0 0 1px #3b82f6;
-      }
-    }
-    @keyframes rotate {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-  `;
-
-  private progressStyle = css`
-    position: absolute;
-    bottom: 0px;
-    left: 0;
-    width: 0%;
-    height: 2px;
-    background-color: #2563eb;
-    transition: all 350ms ease;
-  `;
 }
