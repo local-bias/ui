@@ -31,6 +31,12 @@ export const loaderStyle = css`
   border-radius: 50%;
   box-shadow: inset 0 0 0 1px #3b82f633;
   position: relative;
+
+  animation: none;
+  &[data-animation='true'] {
+    animation: rotate 1.2s infinite linear;
+  }
+
   > div {
     position: absolute;
     left: 50%;

@@ -42,7 +42,12 @@ export class LoadingOverlay extends Overlay {
     this.render();
   }
 
+  override show(): void {
+    this._loaderElement.dataset.animation = 'true';
+  }
+
   override hide(): void {
+    this._loaderElement.dataset.animation = 'false';
     this.#progress = 0;
     this.#html = '';
     this.#label = '';
@@ -68,7 +73,6 @@ export class LoadingOverlay extends Overlay {
     super.render();
 
     this._progressElement.style.width = `${this.#progress}%`;
-    this._loaderElement.style.animation = this._shown ? 'rotate 1.2s infinite linear' : 'none';
 
     if (this.#html) {
       this._contentElement.innerHTML = this.#html;
