@@ -44,7 +44,7 @@ export class Overlay {
     font-family: 'Yu Gothic Medium', '游ゴシック', YuGothic, 'メイリオ', 'Hiragino Kaku Gothic ProN',
       Meiryo, sans-serif;
     color: #356;
-    font-size: 16px;
+    font-size: 14px;
 
     overflow: hidden;
     background-color: #fffb;
@@ -64,6 +64,7 @@ export class Overlay {
 
     place-items: end stretch;
     @media (min-width: 640px) {
+      font-size: 16px;
       place-items: center;
     }
   `;
