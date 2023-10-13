@@ -1,12 +1,12 @@
 {
   "name": "@konomi-app/ui",
-  "version": "1.7.1",
+  "version": "2.0.0",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "author": "adachi",
   "license": "MIT",
   "scripts": {
-    "build": "rmdir dist /s /q && tsc",
+    "build": "rmdir dist /s /q & tsc",
     "prepare": "yarn run build"
   },
   "dependencies": {
