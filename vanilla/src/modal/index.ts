@@ -18,12 +18,15 @@ export class Modal extends Overlay {
   #progress: number | null;
   #state: 'loading' | 'alert' | 'hidden';
 
+  protected readonly _containerElement: HTMLDivElement;
   protected readonly _iconElement: HTMLDivElement;
   protected readonly _titleElement: HTMLDivElement;
   protected readonly _loaderElement: HTMLDivElement;
   protected readonly _progressElement: HTMLDivElement;
   protected readonly _contentElement: HTMLDivElement;
   protected readonly _actionsElement: HTMLDivElement;
+  protected readonly _okButtonElement: HTMLButtonElement;
+  protected readonly _cancelButtonElement: HTMLButtonElement;
 
   public constructor(props: ConstructorProps = {}) {
     super();
@@ -36,6 +39,7 @@ export class Modal extends Overlay {
 
     const container = document.createElement('div');
     container.classList.add(containerStyle);
+    this._containerElement = container;
     this._root.append(container);
 
     const iconElement = document.createElement('div');
@@ -67,14 +71,82 @@ export class Modal extends Overlay {
     this._actionsElement = actionsElement;
     container.append(actionsElement);
 
+    const okButtonElement = document.createElement('button');
+    okButtonElement.type = 'button';
+    okButtonElement.textContent = 'OK';
+    this._okButtonElement = okButtonElement;
+    actionsElement.append(okButtonElement);
+
+    const cancelButtonElement = document.createElement('button');
+    cancelButtonElement.type = 'button';
+    cancelButtonElement.textContent = 'キャンセル';
+    this._cancelButtonElement = cancelButtonElement;
+    actionsElement.append(cancelButtonElement);
+
     this.render();
   }
 
-  public alert(params: { title?: string; text?: string; icon?: string }): void {
-    this.#title = params.title ?? '';
-    this.#label = params.text ?? '';
+  public alert(params: {
+    title?: string;
+    text?: string;
+    icon?: string;
+    disableClose?: boolean;
+    disableEscape?: boolean;
+  }): Promise<any> {
+    const {
+      title = '',
+      text = '',
+      icon = '',
+      disableClose = false,
+      disableEscape = false,
+    } = params;
+    this.#title = title;
+    this.#label = text;
+
     this.changeState('alert');
     this.show();
+
+    return new Promise((resolve) => {
+      this._okButtonElement.addEventListener('click', () => {
+        if (!disableClose) {
+          this.hide();
+        }
+        resolve({
+          isConfirmed: true,
+        });
+      });
+
+      this._cancelButtonElement.addEventListener('click', () => {
+        if (!disableClose) {
+          this.hide();
+        }
+        resolve({
+          isConfirmed: false,
+        });
+      });
+
+      this._root.addEventListener('click', (event) => {
+        if (event.currentTarget === event.target) {
+          if (!disableClose) {
+            this.hide();
+          }
+          resolve({
+            isConfirmed: false,
+          });
+        }
+      });
+
+      this._root.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          if (!disableEscape) {
+            this.hide();
+          }
+          resolve({
+            isConfirmed: false,
+          });
+        }
+      });
+    });
   }
 
   public loading(): void {

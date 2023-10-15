@@ -1,11 +1,8 @@
 import { css } from '@emotion/css';
 
 export const containerStyle = css`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 32px;
+  display: grid;
+  gap: 2px;
   padding: 24px;
   background-color: #fff;
   border-radius: 0;
@@ -93,6 +90,7 @@ export const actionsStyle = css`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  align-items: flex-end;
   gap: 8px;
 
   @media (min-width: 640px) {
