@@ -1,4 +1,4 @@
-import { appendStyle } from './style';
+import { getBodyStyle, getRootStyle } from './style';
 
 export class Overlay {
   protected readonly _root: HTMLDivElement;
@@ -9,9 +9,10 @@ export class Overlay {
     this._shown = false;
     this._disableBeforeUnload = false;
 
-    appendStyle();
     const root = document.createElement('div');
     this._root = root;
+    this._root.classList.add(getRootStyle());
+    document.body.classList.add(getBodyStyle());
     this._root.dataset.konomiUiOverlay = '';
     document.body.append(root);
   }

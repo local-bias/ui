@@ -1,28 +1,13 @@
-import { compileString } from 'sass';
+import { css } from '@emotion/css';
 
-export const appendStyle = (additionalStyle?: string) => {
-  const styleElement: HTMLStyleElement =
-    document.querySelector('style[data-konomi-ui-overlay]') ?? document.createElement('style');
-  styleElement.dataset.konomiUiOverlay = '';
-
-  styleElement.textContent = `
-${bodyStyle}  
-${rootStyle}
-${additionalStyle ?? ''}
-  `;
-};
-
-const bodyStyle = compileString(`
-body {
+export const getBodyStyle = () => css`
   overflow: visible;
   &[data-konomi-ui-overlay] {
     overflow: hidden;
   }
-}
-`);
+`;
 
-const rootStyle = compileString(`
-div[data-konomi-ui-overlay] {
+export const getRootStyle = () => css`
   font-family: 'Yu Gothic Medium', '游ゴシック', YuGothic, 'メイリオ', 'Hiragino Kaku Gothic ProN',
     Meiryo, sans-serif;
   color: #356;
@@ -56,5 +41,4 @@ div[data-konomi-ui-overlay] {
     opacity: 1;
     pointer-events: all;
   }
-}
-`);
+`;
