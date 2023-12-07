@@ -1,5 +1,8 @@
 import { getBodyStyle, getRootStyle } from './style';
 
+const ATTRIBUTE_KEY = 'data-konomi-ui-overlay';
+const ATTRIBUTE_SHOWN = 'data-shown';
+
 export class Overlay {
   protected readonly _root: HTMLDivElement;
   protected _shown: boolean;
@@ -13,22 +16,22 @@ export class Overlay {
     this._root = root;
     this._root.classList.add(getRootStyle());
     document.body.classList.add(getBodyStyle());
-    this._root.dataset.konomiUiOverlay = '';
+    this._root.setAttribute(ATTRIBUTE_KEY, '');
     document.body.append(root);
   }
 
   public show(): void {
     this._shown = true;
-    this._root.dataset.shown = '';
-    document.body.dataset.konomiUiOverlay = '';
+    this._root.setAttribute(ATTRIBUTE_SHOWN, '');
+    document.body.setAttribute(ATTRIBUTE_KEY, '');
     window.addEventListener('beforeunload', this.beforeunload);
     this.render();
   }
 
   public hide(): void {
     this._shown = false;
-    delete this._root.dataset.shown;
-    delete document.body.dataset.konomiUiOverlay;
+    this._root.removeAttribute(ATTRIBUTE_SHOWN);
+    document.body.removeAttribute(ATTRIBUTE_KEY);
     window.removeEventListener('beforeunload', this.beforeunload);
     this.render();
   }
