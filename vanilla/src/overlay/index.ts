@@ -32,10 +32,7 @@ export class Overlay {
     this.render();
   }
 
-  protected render(): void {
-    this._root.classList.add(rootStyle);
-    document.body.classList.add(bodyStyle);
-  }
+  protected render(): void {}
 
   /** JavaScript中にページを離れようとした場合にアラートを表示します */
   private beforeunload(event: BeforeUnloadEvent): void {
