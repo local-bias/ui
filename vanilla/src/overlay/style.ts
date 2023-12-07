@@ -1,8 +1,9 @@
 import { css } from '@emotion/css';
+import { ATTRIBUTE_KEY, ATTRIBUTE_SHOWN } from '.';
 
 export const getBodyStyle = () => css`
   overflow: visible;
-  &[data-konomi-ui-overlay] {
+  &[${ATTRIBUTE_KEY}] {
     overflow: hidden;
   }
 `;
@@ -37,7 +38,7 @@ export const getRootStyle = () => css`
 
   opacity: 0;
   pointer-events: none;
-  &[data-shown] {
+  &[${ATTRIBUTE_SHOWN}] {
     opacity: 1;
     pointer-events: all;
   }

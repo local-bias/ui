@@ -1,7 +1,7 @@
 import { getBodyStyle, getRootStyle } from './style';
 
-const ATTRIBUTE_KEY = 'data-konomi-ui-overlay';
-const ATTRIBUTE_SHOWN = 'data-shown';
+export const ATTRIBUTE_KEY = 'data-konomi-ui-overlay';
+export const ATTRIBUTE_SHOWN = 'data-shown';
 
 export class Overlay {
   protected readonly _root: HTMLDivElement;
