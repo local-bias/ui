@@ -4,6 +4,8 @@ import { containerStyle, loaderStyle, progressStyle } from './style';
 type Label = string | string[];
 type ConstructorProps = Readonly<Partial<{ label: Label; progress: number }>>;
 
+export const ATTRIBUTE_ANIMATION = 'data-animation';
+
 export class LoadingOverlay extends Overlay {
   #label: Label;
   #html: string;
@@ -43,15 +45,16 @@ export class LoadingOverlay extends Overlay {
   }
 
   override show(): void {
-    this._loaderElement.dataset.animation = 'true';
+    super.show();
+    this._loaderElement.setAttribute(ATTRIBUTE_ANIMATION, '');
   }
 
   override hide(): void {
-    this._loaderElement.dataset.animation = 'false';
+    super.hide();
+    this._loaderElement.removeAttribute(ATTRIBUTE_ANIMATION);
     this.#progress = 0;
     this.#html = '';
     this.#label = '';
-    super.hide();
   }
 
   public set label(label: Label) {

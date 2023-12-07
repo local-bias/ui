@@ -1,4 +1,5 @@
 import { css } from '@emotion/css';
+import { ATTRIBUTE_ANIMATION } from '.';
 
 export const containerStyle = css`
   display: flex;
@@ -33,7 +34,7 @@ export const loaderStyle = css`
   position: relative;
 
   animation: none;
-  &[data-animation='true'] {
+  &[${ATTRIBUTE_ANIMATION}] {
     animation: rotate 1.2s infinite linear;
   }
 
