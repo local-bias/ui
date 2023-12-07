@@ -2,7 +2,7 @@ import { css } from '@emotion/css';
 
 export const bodyStyle = css`
   overflow: visible;
-  &[data-konomi-ui-overlay='true'] {
+  &[data-konomi-ui-overlay] {
     overflow: hidden;
   }
 `;
@@ -37,7 +37,7 @@ export const rootStyle = css`
 
   opacity: 0;
   pointer-events: none;
-  &[data-shown='true'] {
+  &[data-shown] {
     opacity: 1;
     pointer-events: all;
   }
