@@ -67,8 +67,12 @@ export class LoadingOverlay extends Overlay {
     this.render();
   }
 
-  public set progress(progress: number) {
-    this.#progress = progress;
+  /**
+   * 進捗状況を設定します。
+   * @param percent 進捗のパーセンテージ(0-100)
+   */
+  public set progress(percent: number) {
+    this.#progress = percent;
     this.render();
   }
 
