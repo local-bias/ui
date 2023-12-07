@@ -1,5 +1,5 @@
 import { Overlay } from '../overlay';
-import { containerStyle, loaderStyle, progressStyle } from './style';
+import { containerStyle, getLoaderStyle, progressStyle } from './style';
 
 type Label = string | string[];
 type ConstructorProps = Readonly<Partial<{ label: Label; progress: number }>>;
@@ -28,7 +28,7 @@ export class LoadingOverlay extends Overlay {
 
     const loaderElement = document.createElement('div');
     loaderElement.innerHTML = '<div><div></div></div>';
-    loaderElement.classList.add(loaderStyle);
+    loaderElement.classList.add(getLoaderStyle());
     this._loaderElement = loaderElement;
     container.append(loaderElement);
 

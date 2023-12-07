@@ -25,7 +25,7 @@ export const containerStyle = css`
   }
 `;
 
-export const loaderStyle = css`
+export const getLoaderStyle = () => css`
   font-size: 60px;
   width: 1em;
   height: 1em;
