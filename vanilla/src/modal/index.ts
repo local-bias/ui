@@ -40,7 +40,7 @@ export class Modal extends Overlay {
     const container = document.createElement('div');
     container.classList.add(containerStyle);
     this._containerElement = container;
-    this._root.append(container);
+    this.root.append(container);
 
     const iconElement = document.createElement('div');
     iconElement.classList.add(iconStyle);
@@ -125,7 +125,7 @@ export class Modal extends Overlay {
         });
       });
 
-      this._root.addEventListener('click', (event) => {
+      this.root.addEventListener('click', (event) => {
         if (event.currentTarget === event.target) {
           if (!disableClose) {
             this.hide();
@@ -136,7 +136,7 @@ export class Modal extends Overlay {
         }
       });
 
-      this._root.addEventListener('keydown', (event) => {
+      this.root.addEventListener('keydown', (event) => {
         if (event.key === 'Escape') {
           if (!disableEscape) {
             this.hide();
@@ -181,7 +181,7 @@ export class Modal extends Overlay {
   private changeState(state: 'loading' | 'alert' | 'hidden'): void {
     this.#state = state;
     const elements = [
-      this._root,
+      this.root,
       this._actionsElement,
       this._contentElement,
       this._iconElement,

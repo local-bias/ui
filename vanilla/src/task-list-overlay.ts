@@ -23,7 +23,7 @@ export class TaskListOverlay extends Overlay {
 
     const container = document.createElement('div');
     container.classList.add(this.containerStyle);
-    this._root.append(container);
+    this.root.append(container);
 
     const contentElement = document.createElement('div');
     this._contentElement = contentElement;
