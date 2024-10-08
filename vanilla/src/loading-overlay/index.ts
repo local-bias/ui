@@ -24,7 +24,7 @@ export class LoadingOverlay extends Overlay {
 
     const container = document.createElement('div');
     container.classList.add(containerStyle);
-    this._root.append(container);
+    this.root.append(container);
 
     const loaderElement = document.createElement('div');
     loaderElement.innerHTML = '<div><div></div></div>';

@@ -55,7 +55,6 @@ export class Overlay {
   /** JavaScript中にページを離れようとした場合にアラートを表示します */
   private beforeunload(event: BeforeUnloadEvent): void {
     event.preventDefault();
-    event.returnValue = '';
   }
 
   protected get root(): HTMLDivElement {
